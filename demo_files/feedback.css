@@ -1,0 +1,21 @@
+/* CSS Document */
+input,button,textarea{font-family:"Microsoft YaHei","\u5FAE\u8F6F\u96C5\u9ED1","STHeiti","Arial";}
+.feedback{ position:fixed;left:0;top:0;width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:10005}
+.feedback_block{width:620px; margin:100px auto 0; background:#fff; border-radius:6px; position:relative}
+/* .feedback_title{ background:#ececec; height:50px; line-height:50px; text-align:center;  border-radius:6px 6px 0 0;  font-size:20px} */
+.feedback_title{ background:#ececec; height:50px; line-height:50px; text-align:center; font-size:20px}
+.feedback_close{ position:absolute;right:14px; top:18px;width:16px; height:16px; background:url(../img/close_ico.png) no-repeat left top}
+.feedback_box{ padding:0 36px}
+.feedback_tip{color:#999; margin:20px 0 0}
+.feedback_title01{ font-size:18px; font-weight:bold; margin:20px 0 10px}
+.feedback_title01 i{color:#999;font-size:14px; font-weight:normal;}
+.feedback_title01 .prompt{ color:#c00;background:url(../img/prompt_ico.png) no-repeat left center; padding-left:23px; margin-left:20px}
+.feedback_textarea{border:1px solid #cbcbcb;border-radius:4px;height:100px;width:96%;padding: 8px 2%;font-size: 14px;}
+.feedback_box ul li{ height:96px; float:left; margin-right:17px;width:96px;}
+.feedback_box ul li.last{ margin-right:0}
+.feedback_box ul li img{height:96px;width:96px;border-radius:4px;}
+.contact_mode{border:1px solid #cbcbcb; border-radius:4px; height:42px;width:200px; padding:0 10px}
+.feedback_btn button{ height:46px;width:152px; background:#eb6120;color:#fff; border-radius:4px; font-size:16px; margin-top:20px}
+.pos_rel{position: relative;}
+.closeico {  background:url(http://statics.xafc.com/i/v2.0/assets/images/member/delete-ico.png) no-repeat ;  display:none!important;  position:absolute;  top:0;  right:0px;  height:30px;  z-index:999;width:30px;  cursor: pointer ;  background-color: #eb6120 ;  }
+.imgItem:hover .closeico{  display:block!important;}

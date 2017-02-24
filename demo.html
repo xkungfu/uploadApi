@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <title>意见反馈页面</title>
+        <link href="./demo_files/layout.css" rel="stylesheet" type="text/css">
+        <link href="./demo_files/feedback.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./demo_files/layer.css" id="layui_layer_skinlayercss">
+    </head>
+    <body>
+        <div class="feedback_title">意见反馈</div>
+        <div class="feedback_box">
+            <p class="feedback_tip">您有任何意见和建议，或使用中遇到的问题，请反馈给我们吧！</p>
+            <div class="feedback_title01">反馈内容<i>（100字以内）</i><i class="prompt" style="display: none">请填写反馈内容</i></div>
+            <textarea class="feedback_textarea" id="content" placeholder="我们将尽快处理您反馈的信息" maxlength="100" style="resize:none"></textarea>
+            <div class="feedback_title01">添加图片<i>（选填，最多4张）</i></div>
+            <ul>
+                <li class="uploadIco"><img src="./demo_files/add_img.jpg"></li>
+            </ul>
+            <input type="hidden" name="city" id="city" value="hf">
+            <input type="hidden" name="source" id="source" value="pc">
+            <!--     <input type="hidden" name="city" id="city" value="hf" />
+                <input type="hidden" name="source" id="source" value="pc" /> -->
+            <div class="clear"></div>
+            <div class="feedback_title01">联系方式<i>（选填）</i></div>
+            <input type="text" class="contact_mode" id="contact" placeholder="手机、QQ、邮箱均可">
+            <div class="feedback_btn"><button type="button" class="button">提交反馈</button></div>
+            <script type="text/javascript" src="./demo_files/jquery.js"></script>
+            <script type="text/javascript" charset="utf-8" src="./demo_files/layer.js"></script>
+            <script type="text/javascript">
+                //document.domain = document.domain.split('.').slice(-2).join('.');
+                document.domain = '**.com';
+                $(function () {
+                    //展示iframe
+                    $('.uploadIco img').on('click', function (e) {
+                        var $elements = $('.pos_rel');
+                        var len = $elements.length;
+                        var num = 4 - len;
+                        if (len >= 4) {
+                            layer.msg('最多只能传4张图片！');
+                        } else {
+                            layer.open({
+                                type: 2,
+                                title: '图片上传',
+                                area: ['600px', '500px'],
+                                fix: false, //不固定
+                                maxmin: false,
+                                offset: '100px',
+                                content: 'http://**.com/addFile.html#feedback' + num,
+                                btn: ['提交'],
+                                yes: function (index, layerdom) {
+                                    var returnValue = layer.getChildFrame('body', index);
+                                    alltxt = returnValue.find('.imgurl');
+                                    if (alltxt.eq(0).val()) {
+                                        funDefine(alltxt, e.target); //自定义函数处理返回值，this表示当前dom对象
+                                    } else {
+                                        layer.msg('请上传图片');
+                                    }
+                                    layer.close(index); //关闭按钮
+                                }
+                            });
+                        }
+                    });
+
+                });
+
+                //删除操作
+                function delUploadImg(obj) {
+                    $.ajax({
+                        type: "get",
+                        url: "http://**.com/server/delPic.php",
+                        dataType: "jsonp",
+                        data: {picimg: $(obj).parent().find(':input').val(), domain: window.location.href},
+                        jsonp: "callback",
+                        jsonpCallback: "success_jsonpCallback",
+                        success: function (json) {
+                            if (json.result) {
+                                layer.msg('删除成功');
+                                $(obj).parent().remove();    //删除父级元素
+                            } else {
+                                layer.msg('删除失败，请重试！');
+                            }
+                        },
+                        error: function () {
+                            layer.msg("请重试！");
+                        }
+                    });
+                }
+
+                var funDefine = function (args, obj) {
+                    //处理返回的数据
+                    if (args == '')
+                        return;
+                    var urlstr = '';
+                    for (var i = 0; i < args.length; i++) {
+                        urlstr += '<li class="pos_rel imgItem"><i class="closeico" onclick="delUploadImg(this)"></i><img src="' + args.eq(i).val() + '" />' +
+                                '<input type="hidden" class="images" name="images[]" value="' + args.eq(i).val() + '" /></li>';
+                    }
+                    $(obj).parent().before(urlstr);
+                };
+
+            </script>
+
+        </div>
+    </body>
+</html>
