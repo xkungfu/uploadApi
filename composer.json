@@ -1,0 +1,11 @@
+{
+    "name": "jyncode/uploadApi",
+    "description": "The remote file upload system",
+    "keywords": ["plugin", "upload"],
+    "license": "MIT",
+    "autoload": {
+        "file": [
+            "server/index.php"
+        ]
+    }
+}
