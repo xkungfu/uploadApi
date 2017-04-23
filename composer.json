@@ -1,5 +1,5 @@
 {
-    "name": "jyncode/uploadApi",
+    "name": "jyncode/upload-api",
     "description": "The remote file upload system",
     "keywords": ["plugin", "upload"],
     "license": "MIT",
