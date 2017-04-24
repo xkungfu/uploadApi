@@ -4,6 +4,6 @@
     "keywords": ["plugin", "upload"],
     "license": "MIT",
     "autoload": {
-        "classmap": ["server/", "class/", "Local.class.php"]
+        "classmap": ["server", "class", "Local.class.php"]
     }
 }
