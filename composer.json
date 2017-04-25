@@ -4,6 +4,8 @@
     "keywords": ["plugin", "upload"],
     "license": "MIT",
     "autoload": {
-        "classmap": ["server", "class", "Local.class.php"]
+        "psr-0": {
+            "upload-api": "service"
+        }
     }
 }
